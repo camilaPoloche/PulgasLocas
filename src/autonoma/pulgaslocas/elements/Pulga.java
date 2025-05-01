@@ -8,7 +8,7 @@ package autonoma.pulgaslocas.elements;
  *
  * @author Camila
  */
-public abstract class Pulga {
+public abstract class Pulga  {
     protected int indiceVida;
 
     public Pulga(int indiceVida) {
