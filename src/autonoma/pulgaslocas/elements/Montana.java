@@ -23,14 +23,14 @@ public class Montana extends SpriteContainer {
     public Montana(int x, int y, int height, int width) {
         super(x, y, height, width);
         
-        pulga1 = new PulgaNormal(1,(width-PulgaNormal.INITIAL_WIDTH)/2, 
-                          (height-PulgaNormal.INITIAL_HEIGHT)/2, 
+        pulga1 = new PulgaNormal(1,(this.width-PulgaNormal.INITIAL_WIDTH)/2, 
+                          (this.height-PulgaNormal.INITIAL_HEIGHT)/2, 
                           PulgaNormal.INITIAL_WIDTH, PulgaNormal.INITIAL_HEIGHT);
         pulga1.setGraphicContainer(this);
         
         
-        pulga2 = new PulgaMutante(2,(width-PulgaMutante.INITIAL_WIDTH)/2, 
-                          (height-PulgaMutante.INITIAL_HEIGHT)/2, 
+        pulga2 = new PulgaMutante(2,(this.width-PulgaMutante.INITIAL_WIDTH)/2, 
+                          (this.height-PulgaMutante.INITIAL_HEIGHT)/2, 
                           PulgaMutante.INITIAL_WIDTH, PulgaMutante.INITIAL_HEIGHT);
         pulga2.setGraphicContainer(this);
         
@@ -38,20 +38,30 @@ public class Montana extends SpriteContainer {
     }   
     
     private void addPulgaNormal(){
-        int x = (int)(Math.random() * width);
-        int y = (int)(Math.random() * height);
-        
-        PulgaNormal pulga1 = new PulgaNormal(1,x, y, 25, 25);
-        
+        int w = 25;
+        int h= 25;
+        int x, y;
+
+        do {
+            x = (int)(Math.random() * this.width);
+            y = (int)(Math.random() * this.height);
+        } while (isOutOfGraphicContainer(x, y, w, h)); 
+
+        PulgaNormal pulga1 = new PulgaNormal(1, x, y, w, h);
         sprites.add(pulga1);
     }
     
     private void addPulgaMutante(){
-        int x = (int)(Math.random() * width);
-        int y = (int)(Math.random() * height);
-        
-        PulgaMutante pulga2 = new PulgaMutante(2,x, y, 25, 25);
-        
+        int w = 25;
+        int h = 25;
+        int x, y;
+
+        do {
+            x = (int)(Math.random() * this.width);
+            y = (int)(Math.random() * this.height);
+        } while (isOutOfGraphicContainer(x, y, w, h)); 
+
+        PulgaMutante pulga2 = new PulgaMutante(2, x, y, w, h);
         sprites.add(pulga2);
     }
     

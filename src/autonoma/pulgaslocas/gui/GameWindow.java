@@ -22,8 +22,7 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
         initComponents();
     }
     
-    private void exitGame()
-    {
+    private void exitGame(){
         System.exit(0);
     }
     
@@ -33,8 +32,7 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g); 
-    
+       super.paint(g); 
        montana.paint(g);
     }
     
@@ -96,7 +94,6 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
     public Rectangle getBoundaries() {
         return this.getBounds();
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

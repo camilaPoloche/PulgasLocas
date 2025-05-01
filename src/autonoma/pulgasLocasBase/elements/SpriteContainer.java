@@ -52,7 +52,8 @@ public class SpriteContainer extends Sprite implements GraphicContainer{
 
     @Override
     public void paint(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        g.setColor(color);
+        g.fillRect(x, y, width, height);
     }
     
 }

@@ -40,9 +40,9 @@ public abstract class Sprite {
         
         Rectangle bounds = gameContainer.getBoundaries();
         
-        return !(x >= bounds.getX() &
-                 y >= bounds.getY() &
-                 x + width  <= bounds.getX() + bounds.getWidth() &
+        return !(x >= bounds.getX() &&
+                 y >= bounds.getY() &&
+                 x + width  <= bounds.getX() + bounds.getWidth() &&
                  y + height <= bounds.getY() + bounds.getHeight());
     }
     
