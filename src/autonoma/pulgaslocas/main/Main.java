@@ -4,6 +4,8 @@
  */
 package autonoma.pulgaslocas.main;
 
+import autonoma.pulgaslocas.elements.HiloAnadirPulgaMutante;
+import autonoma.pulgaslocas.elements.HiloAnadirPulgaNormal;
 import autonoma.pulgaslocas.elements.Montana;
 import autonoma.pulgaslocas.gui.GameWindow;
 
@@ -14,8 +16,11 @@ import autonoma.pulgaslocas.gui.GameWindow;
 public class Main {
     public static void main(String[] args){
         
-        Montana montana = new Montana(0, 0, 480, 480);
+        Montana montana = new Montana(2, 2, 480, 480);
         
+        Thread hilo1 = new Thread(new HiloAnadirPulgaNormal(montana));
+        Thread hilo2 = new Thread(new HiloAnadirPulgaMutante(montana));
+//        
         GameWindow window = new GameWindow(montana);
         window.setMontana(montana);
         montana.setGraphicContainer(window);
@@ -23,5 +28,7 @@ public class Main {
         window.setTitle("Gnome Game");
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+        hilo1.start();
+        hilo2.start();
     }
 }

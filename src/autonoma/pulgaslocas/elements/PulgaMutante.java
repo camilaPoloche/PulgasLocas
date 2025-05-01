@@ -27,6 +27,6 @@ public class PulgaMutante extends Pulga{
     @Override
     public void paint(Graphics g) {
         g.setColor(color);
-        g.fillRect(x, y, width, height);
+        g.fillOval(x, y, width, height);
     }
 }

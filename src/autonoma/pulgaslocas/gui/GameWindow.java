@@ -5,6 +5,8 @@
 package autonoma.pulgaslocas.gui;
 
 import autonoma.pulgasLocasBase.elements.GraphicContainer;
+import autonoma.pulgaslocas.elements.HiloAnadirPulgaMutante;
+import autonoma.pulgaslocas.elements.HiloAnadirPulgaNormal;
 import autonoma.pulgaslocas.elements.Montana;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -17,6 +19,7 @@ import java.awt.event.KeyEvent;
 public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
     
     private Montana montana;
+        
     public GameWindow(Montana montana) {
         this.montana = montana;
         initComponents();

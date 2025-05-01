@@ -4,6 +4,7 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import autonoma.pulgasLocasBase.elements.GraphicContainer;
 import autonoma.pulgasLocasBase.elements.Sprite;
 import autonoma.pulgasLocasBase.elements.SpriteContainer;
 import java.awt.Color;
@@ -15,7 +16,7 @@ import java.awt.event.KeyEvent;
  *
  * @author aleja
  */
-public class Montana extends SpriteContainer {
+public class Montana extends SpriteContainer implements GraphicContainer {
     
     protected PulgaNormal pulga1;
     protected PulgaMutante pulga2;
@@ -37,30 +38,62 @@ public class Montana extends SpriteContainer {
         this.setColor(Color.CYAN);
     }   
     
-    private void addPulgaNormal(){
-        int x = (int)(Math.random() * (width - 25));
-        int y = (int)(Math.random() * (height - 25));
-        
-        if (y < 25) {
-            y = 25;  
-        }
-        
-        PulgaNormal pulga1 = new PulgaNormal(1,x, y, 25, 25);
-        
+    public void addPulgaNormal() {
+        int w = 15;
+        int h = 15;
+        int x, y;
+
+        boolean chocadas;
+        do {
+            x = (int)(Math.random() * (this.width - 15)); 
+            y = (int)(Math.random() * (this.height - 15));
+            chocadas = false;
+
+            for (Sprite sprite : sprites) {
+                Pulga pulgaExistente = (Pulga) sprite;
+                int distanciaX = Math.abs(x - pulgaExistente.getX());
+                int distanciaY = Math.abs(y - pulgaExistente.getY());
+
+                if (distanciaX < w && distanciaY < h) {
+                    chocadas = true;
+                    break;
+                }
+            }
+        } while (chocadas);
+        PulgaNormal pulga1 = new PulgaNormal(1, x, y, w, h);
         sprites.add(pulga1);
-    }
-    
-     private void addPulgaMutante(){
-        int x = (int)(Math.random() * (width - 25));
-        int y = (int)(Math.random() * (height - 25));
         
-        if (y < 25) {
-            y = 25;  
+        if (gameContainer != null) {
+            gameContainer.repaint();
         }
+    }
+
+
+    public void addPulgaMutante() {
+        int w = 20;
+        int h = 20;
+        int x, y;
+
+        boolean chocadas;
+        do {
+            x = (int)(Math.random() * (this.width - 20)); 
+            y = (int)(Math.random() * (this.height - 20));
+            chocadas = false;
+
+            for (Sprite sprite : sprites) {
+                Pulga pulgaExistente = (Pulga) sprite;
+                int distanciaX = Math.abs(x - pulgaExistente.getX());
+                int distanciaY = Math.abs(y - pulgaExistente.getY());
+
+                if (distanciaX < w && distanciaY < h) {
+                    chocadas = true;
+                    break;
+                }
+            }
+        } while (chocadas);
         
-        PulgaMutante pulga2 = new PulgaMutante(2,x, y, 25, 25);
-        
-        sprites.add(pulga2);
+       PulgaMutante pulga2 = new PulgaMutante(2, x, y, w, h);
+       sprites.add(pulga2);
     }
     
     public void handleKey(KeyEvent e)
