@@ -8,6 +8,6 @@ package autonoma.pulgaslocas.elements;
  *
  * @author aleja
  */
-public class Arma {
-    
+public abstract class Arma {
+    public abstract void destruirPulgas();
 }

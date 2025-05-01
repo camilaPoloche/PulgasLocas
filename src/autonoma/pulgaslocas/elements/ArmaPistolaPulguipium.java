@@ -8,6 +8,9 @@ package autonoma.pulgaslocas.elements;
  *
  * @author aleja
  */
-public class ArmaPistolaPulguipium {
-    
+public class ArmaPistolaPulguipium extends Arma{
+    @Override
+    public void destruirPulgas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
