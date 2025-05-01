@@ -4,10 +4,18 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
  * @author aleja
  */
-public class LectorArchivoTextoPlano {
+public class LectorArchivoTextoPlano implements Lector{
+
+    @Override
+    public ArrayList<String> leer(String localizacionArchivo) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

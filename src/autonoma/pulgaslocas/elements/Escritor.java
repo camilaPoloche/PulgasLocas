@@ -4,10 +4,15 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
  * @author aleja
  */
-public class Escritor {
+public interface Escritor {
+    
+    public abstract void escribir(ArrayList<String> archivo) throws IOException ;
     
 }

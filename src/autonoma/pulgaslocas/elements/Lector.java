@@ -4,10 +4,14 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
  * @author aleja
  */
-public class Lector {
+public interface Lector {
     
+    public abstract ArrayList<String> leer(String localizacionArchivo) throws IOException;
 }
