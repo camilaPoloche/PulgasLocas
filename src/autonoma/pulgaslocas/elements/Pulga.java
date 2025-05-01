@@ -8,6 +8,21 @@ package autonoma.pulgaslocas.elements;
  *
  * @author Camila
  */
-public class Pulga {
-    
+public abstract class Pulga {
+    protected int indiceVida;
+
+    public Pulga(int indiceVida) {
+        this.indiceVida = indiceVida;
+    }
+  
+    public abstract void saltar();
+
+    public int getIndiceVida() {
+        return indiceVida;
+    }
+
+    public void setIndiceVida(int indiceVida) {
+        this.indiceVida = indiceVida;
+    }
 }
+
