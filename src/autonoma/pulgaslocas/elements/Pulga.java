@@ -4,15 +4,27 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import autonoma.pulgasLocasBase.elements.Sprite;
+import java.awt.Color;
+
 /**
  *
  * @author Camila
  */
-public abstract class Pulga {
+public abstract class Pulga  extends Sprite{
     protected int indiceVida;
+    
+    public static final int INITIAL_WIDTH = 50;
+    public static final int INITIAL_HEIGHT = 50;
+    public static final int GROW_SIZE = 4;
+    
+    protected int step = 5;     
+    
 
-    public Pulga(int indiceVida) {
+    public Pulga(int indiceVida, int x, int y, int height, int width) {
+        super(x, y, height, width);
         this.indiceVida = indiceVida;
+        setColor(Color.BLUE);
     }
   
     public abstract void saltar();

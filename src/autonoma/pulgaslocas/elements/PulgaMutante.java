@@ -4,18 +4,28 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author aleja
  */
 public class PulgaMutante extends Pulga{
 
-    public PulgaMutante() {
-        super(2);
+    public PulgaMutante(int indiceVida, int x, int y, int height, int width) {
+        super(2,x, y, height, width);
+        this.indiceVida = indiceVida;
+        setColor(Color.RED);
     }
 
     @Override
     public void saltar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void paint(Graphics g) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
