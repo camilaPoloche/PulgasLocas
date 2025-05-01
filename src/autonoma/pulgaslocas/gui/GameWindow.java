@@ -4,19 +4,40 @@
  */
 package autonoma.pulgaslocas.gui;
 
+import autonoma.pulgasLocasBase.elements.GraphicContainer;
+import autonoma.pulgaslocas.elements.Montana;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author aleja
  */
-public class GameWindow extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GameWindow
-     */
-    public GameWindow() {
+public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
+    
+    private Montana montana;
+    public GameWindow(Montana montana) {
+        this.montana = montana;
         initComponents();
     }
+    
+    private void exitGame()
+    {
+        System.exit(0);
+    }
+    
+    public void setMontana(Montana montana) {
+        this.montana = montana;
+    }
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); 
+    
+       montana.paint(g);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,6 +48,11 @@ public class GameWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -42,41 +68,35 @@ public class GameWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GameWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GameWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GameWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GameWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        switch(evt.getKeyCode())
+        {   
+            case KeyEvent.VK_P:
+                montana.handleKey(evt);
+            break;
+            
+            case KeyEvent.VK_M:
+                montana.handleKey(evt);
+            break;
+            
+            case KeyEvent.VK_Q:
+                exitGame();
+            break;
         }
-        //</editor-fold>
+        
+        repaint();
+    }//GEN-LAST:event_formKeyPressed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GameWindow().setVisible(true);
-            }
-        });
+    @Override
+    public void refresh() {
+        this.repaint();
     }
 
+    @Override
+    public Rectangle getBoundaries() {
+        return this.getBounds();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
