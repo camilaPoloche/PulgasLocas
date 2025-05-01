@@ -38,30 +38,28 @@ public class Montana extends SpriteContainer {
     }   
     
     private void addPulgaNormal(){
-        int w = 25;
-        int h= 25;
-        int x, y;
-
-        do {
-            x = (int)(Math.random() * this.width);
-            y = (int)(Math.random() * this.height);
-        } while (isOutOfGraphicContainer(x, y, w, h)); 
-
-        PulgaNormal pulga1 = new PulgaNormal(1, x, y, w, h);
+        int x = (int)(Math.random() * (width - 25));
+        int y = (int)(Math.random() * (height - 25));
+        
+        if (y < 25) {
+            y = 25;  
+        }
+        
+        PulgaNormal pulga1 = new PulgaNormal(1,x, y, 25, 25);
+        
         sprites.add(pulga1);
     }
     
-    private void addPulgaMutante(){
-        int w = 25;
-        int h = 25;
-        int x, y;
-
-        do {
-            x = (int)(Math.random() * this.width);
-            y = (int)(Math.random() * this.height);
-        } while (isOutOfGraphicContainer(x, y, w, h)); 
-
-        PulgaMutante pulga2 = new PulgaMutante(2, x, y, w, h);
+     private void addPulgaMutante(){
+        int x = (int)(Math.random() * (width - 25));
+        int y = (int)(Math.random() * (height - 25));
+        
+        if (y < 25) {
+            y = 25;  
+        }
+        
+        PulgaMutante pulga2 = new PulgaMutante(2,x, y, 25, 25);
+        
         sprites.add(pulga2);
     }
     
@@ -84,7 +82,6 @@ public class Montana extends SpriteContainer {
         g.setColor(color);
         g.fillRect(x, y, width, height);
 
-  
         for(Sprite sprite : sprites){
             sprite.paint(g);
         }

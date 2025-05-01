@@ -14,16 +14,14 @@ import autonoma.pulgaslocas.gui.GameWindow;
 public class Main {
     public static void main(String[] args){
         
-        Montana montana = new Montana(0, 0, 500, 500);
+        Montana montana = new Montana(0, 0, 480, 480);
         
         GameWindow window = new GameWindow(montana);
         window.setMontana(montana);
         montana.setGraphicContainer(window);
-        window.setSize(500, 500);
+        window.setSize(480, 480);
         window.setTitle("Gnome Game");
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
-    
-    
 }
