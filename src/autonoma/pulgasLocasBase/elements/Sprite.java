@@ -30,13 +30,11 @@ public abstract class Sprite {
         this.width = width;
     }
     
-    public boolean isOutOfGraphicContainer()
-    {
+    public boolean isOutOfGraphicContainer(){
         return isOutOfGraphicContainer(x, y, width, height);
     }
 
-    public boolean isOutOfGraphicContainer(int x, int y, int width, int height)
-    {
+    public boolean isOutOfGraphicContainer(int x, int y, int width, int height){
         if(gameContainer == null)
             return false;
         
@@ -48,17 +46,13 @@ public abstract class Sprite {
                  y + height <= bounds.getY() + bounds.getHeight());
     }
     
-    public boolean checkCollision(Sprite other)
-    {
-        // Collision x-axis?
+    public boolean checkCollision(Sprite other){
         boolean collisionX = this.getX() + this.getWidth() >= other.getX() &&
             this.getX() < other.getX() + other.getWidth();
 
-        // Collision y-axis?
         boolean collisionY = this.getY() + this.getHeight() >= other.getY() &&
             this.getY() < other.getY() + other.getHeight();
 
-        // Collision only if on both axes
         return collisionX && collisionY;        
     }
 
