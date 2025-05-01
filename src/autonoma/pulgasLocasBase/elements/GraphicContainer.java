@@ -4,10 +4,16 @@
  */
 package autonoma.pulgasLocasBase.elements;
 
+import java.awt.Rectangle;
+
+
+
 /**
  *
  * @author maria
  */
 public interface GraphicContainer {
     
+    public void refresh();
+    public Rectangle getBoundaries();
 }
