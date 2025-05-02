@@ -21,7 +21,7 @@ public class HiloAnadirPulgaMutante implements Runnable{
         while (running) {
             this.montana.addPulgaMutante();
             try {
-                Thread.sleep(10000); 
+                Thread.sleep(9999); 
             } catch (InterruptedException e) {
                 
             }

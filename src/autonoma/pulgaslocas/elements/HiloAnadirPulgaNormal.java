@@ -21,7 +21,7 @@ public class HiloAnadirPulgaNormal extends Thread{
         while (running) {
             this.montana.addPulgaNormal();
             try {
-                Thread.sleep(1000); 
+                Thread.sleep(5000); 
             } catch (InterruptedException e) {
                 
             }
