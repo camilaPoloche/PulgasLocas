@@ -9,20 +9,23 @@ package autonoma.pulgaslocas.elements;
  * @author aleja
  */
 public class ArmaMisilPulgoson extends Arma{
+    private Montana montana;
 
+    public ArmaMisilPulgoson(Montana montana) {
+        this.montana = montana;
+    }
+    
     @Override
     public void destruirPulgas() {
-    
-    int destruir = pulgas.size() / 2;
+        int destruir = this.montana.getSprites().size() / 2;
         for (int i = 0; i < destruir; i++) {
-            pulgas.remove(0);
-            puntaje++;
+            this.montana.remove(0);
+//            puntaje++;
         }
-
     }
 
     @Override
     public void destruirPulgas(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 }

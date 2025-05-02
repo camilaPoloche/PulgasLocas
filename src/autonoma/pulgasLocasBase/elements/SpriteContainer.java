@@ -59,6 +59,4 @@ public class SpriteContainer extends Sprite implements GraphicContainer{
     public ArrayList<Sprite> getSprites() {
         return sprites;
     }
-    
-    
 }

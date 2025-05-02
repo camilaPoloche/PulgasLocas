@@ -11,6 +11,7 @@ import autonoma.pulgaslocas.elements.Montana;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -49,6 +50,11 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -90,6 +96,15 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
         
         repaint();
     }//GEN-LAST:event_formKeyPressed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            int x = evt.getX();
+            int y = evt.getY();
+
+            this.montana.asesinarPulgasPulguipium(x, y);
+        }
+    }//GEN-LAST:event_formMouseClicked
 
     @Override
     public void refresh() {

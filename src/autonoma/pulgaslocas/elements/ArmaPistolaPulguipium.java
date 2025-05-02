@@ -18,8 +18,6 @@ public class ArmaPistolaPulguipium extends Arma{
         this.montana = montana;
     }
     
-    
-    
     @Override
     public void destruirPulgas(int x, int y) {
         for (int i = 0; i < this.montana.getSprites().size(); i++) {
@@ -29,7 +27,6 @@ public class ArmaPistolaPulguipium extends Arma{
                 if (p instanceof PulgaMutante) {
                     Pulga nueva = ((PulgaMutante)p).transformar();
                     this.montana.getSprites().set(i, nueva);
-                    
                 } else if (((Pulga) p).estaMuerta()) {
                     this.montana.remove(i);
 //                    puntaje++;
@@ -37,5 +34,10 @@ public class ArmaPistolaPulguipium extends Arma{
                 break;
             }
         }
+    }
+
+    @Override
+    public void destruirPulgas() {
+        
     }
 }

@@ -125,6 +125,17 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         refresh();
     }
     
+    public void asesinarPulgasPulguipium(int x, int y){
+        ArmaPistolaPulguipium armaPulguipium = new ArmaPistolaPulguipium(this);
+        for (Sprite p : sprites){
+            if (p instanceof Pulga){
+                if (((Pulga) p).getX() == x && ((Pulga) p).getY() == y){
+                    armaPulguipium.destruirPulgas(x, y);
+                }
+            }
+        }
+    }
+    
     @Override
     public void paint(Graphics g) {     
         g.setColor(color);
