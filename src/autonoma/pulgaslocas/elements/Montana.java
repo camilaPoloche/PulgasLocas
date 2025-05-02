@@ -63,9 +63,7 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         PulgaNormal pulga1 = new PulgaNormal(1, x, y, w, h);
         sprites.add(pulga1);
         
-        if (gameContainer != null) {
-            gameContainer.repaint();
-        }
+        refresh();
     }
 
 
@@ -94,6 +92,8 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         
        PulgaMutante pulga2 = new PulgaMutante(2, x, y, w, h);
        sprites.add(pulga2);
+       
+       refresh();
     }
     
     public void handleKey(KeyEvent e)

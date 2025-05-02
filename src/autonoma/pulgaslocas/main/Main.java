@@ -20,12 +20,12 @@ public class Main {
         
         Thread hilo1 = new Thread(new HiloAnadirPulgaNormal(montana));
         Thread hilo2 = new Thread(new HiloAnadirPulgaMutante(montana));
-//        
+        
         GameWindow window = new GameWindow(montana);
         window.setMontana(montana);
         montana.setGraphicContainer(window);
         window.setSize(480, 480);
-        window.setTitle("Gnome Game");
+        window.setTitle("Pulgas locas");
         window.setLocationRelativeTo(null);
         window.setVisible(true);
         hilo1.start();

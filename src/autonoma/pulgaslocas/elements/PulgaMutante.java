@@ -12,7 +12,7 @@ import java.awt.Graphics;
  * @author aleja
  */
 public class PulgaMutante extends Pulga{
-
+    
     public PulgaMutante(int indiceVida, int x, int y, int height, int width) {
         super(2,x, y, height, width);
         this.indiceVida = indiceVida;

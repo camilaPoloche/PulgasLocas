@@ -12,7 +12,7 @@ import java.awt.Graphics;
  * @author aleja
  */
 public class PulgaNormal extends Pulga{
-
+    
     public PulgaNormal(int indiceVida, int x, int y, int height, int width) {
         super(1, x, y, height, width);
         this.indiceVida = indiceVida;

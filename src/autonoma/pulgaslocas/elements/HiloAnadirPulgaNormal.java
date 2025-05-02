@@ -19,7 +19,7 @@ public class HiloAnadirPulgaNormal extends Thread{
     @Override
     public void run() {
         while (running) {
-            this.montana.addPulgaMutante();
+            this.montana.addPulgaNormal();
             try {
                 Thread.sleep(1000); 
             } catch (InterruptedException e) {
