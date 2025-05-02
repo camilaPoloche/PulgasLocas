@@ -4,13 +4,38 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import autonoma.pulgasLocasBase.elements.Sprite;
+
 /**
  *
  * @author aleja
  */
 public class ArmaPistolaPulguipium extends Arma{
+    
+    private Montana montana;
+
+    public ArmaPistolaPulguipium(Montana montana) {
+        this.montana = montana;
+    }
+    
+    
+    
     @Override
-    public void destruirPulgas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void destruirPulgas(int x, int y) {
+        for (int i = 0; i < this.montana.getSprites().size(); i++) {
+            Sprite p = this.montana.getSprites().get(i);
+            if (p.getGameContainer().getBoundaries().contains(x, y)) {
+                ((Pulga) p).recibirImpacto();
+                if (p instanceof PulgaMutante) {
+                    Pulga nueva = ((PulgaMutante)p).transformar();
+                    this.montana.getSprites().set(i, nueva);
+                    
+                } else if (((Pulga) p).estaMuerta()) {
+                    this.montana.remove(i);
+//                    puntaje++;
+                }
+                break;
+            }
+        }
     }
 }

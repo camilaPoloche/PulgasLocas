@@ -9,5 +9,6 @@ package autonoma.pulgaslocas.elements;
  * @author aleja
  */
 public abstract class Arma {
+    public abstract void destruirPulgas(int x, int y);
     public abstract void destruirPulgas();
 }

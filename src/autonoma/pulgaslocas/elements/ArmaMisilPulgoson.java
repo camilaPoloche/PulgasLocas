@@ -12,7 +12,17 @@ public class ArmaMisilPulgoson extends Arma{
 
     @Override
     public void destruirPulgas() {
+    
+    int destruir = pulgas.size() / 2;
+        for (int i = 0; i < destruir; i++) {
+            pulgas.remove(0);
+            puntaje++;
+        }
+
+    }
+
+    @Override
+    public void destruirPulgas(int x, int y) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 }

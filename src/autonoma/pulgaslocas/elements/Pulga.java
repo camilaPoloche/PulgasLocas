@@ -26,14 +26,26 @@ public abstract class Pulga  extends Sprite{
         setColor(Color.BLUE);
     }
   
-    public abstract void saltar();
-
+    public void saltar(int width,int height){
+        x = (int)(Math.random()*(width - 50));
+        y = (int)(Math.random()*(height - 50));
+    }
+    
+    public abstract void recibirImpacto () ;
+    
     public int getIndiceVida() {
         return indiceVida;
     }
 
     public void setIndiceVida(int indiceVida) {
         this.indiceVida = indiceVida;
+    }
+    
+    public boolean estaMuerta() {
+        if (this.indiceVida == 0){
+            return true;
+        }
+        return false;
     }
 }
 

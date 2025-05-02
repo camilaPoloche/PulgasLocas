@@ -19,14 +19,15 @@ public class PulgaNormal extends Pulga{
         setColor(Color.BLUE);
     }
 
-    @Override
-    public void saltar() {
-        System.out.println("Saltando");
-    }
 
     @Override
     public void paint(Graphics g) {
         g.setColor(color);
         g.fillOval(x, y, width, height);
+    }
+
+    @Override
+    public void recibirImpacto() {
+        this.indiceVida --;
     }
 }

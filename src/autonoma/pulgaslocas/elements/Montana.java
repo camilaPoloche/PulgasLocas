@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  *
@@ -107,15 +108,31 @@ public class Montana extends SpriteContainer implements GraphicContainer {
             case KeyEvent.VK_M:
                 addPulgaMutante();
             break;
+            
+            case KeyEvent.VK_S:
+                saltarP(this.width, this.height);
+            break;
         }    
+    }
+    
+    public void saltarP (int width, int height){
+        
+        for (Sprite p : sprites){
+            if (p instanceof Pulga){
+                ((Pulga) p).saltar(width, height);
+            }
+        }
+        refresh();
     }
     
     @Override
     public void paint(Graphics g) {     
         g.setColor(color);
         g.fillRect(x, y, width, height);
-
-        for(Sprite sprite : sprites){
+        
+        ArrayList<Sprite> copiaSprites = new ArrayList<>(sprites);
+        
+        for(Sprite sprite : copiaSprites){
             sprite.paint(g);
         }
     }
@@ -129,5 +146,9 @@ public class Montana extends SpriteContainer implements GraphicContainer {
     @Override
     public Rectangle getBoundaries() {
         return new Rectangle(x, y, width, height);
+    }
+
+    public ArrayList<Sprite> getSprites() {
+        return sprites;
     }
 }

@@ -83,6 +83,9 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
             case KeyEvent.VK_Q:
                 exitGame();
             break;
+            
+            case KeyEvent.VK_S:
+                montana.handleKey(evt);
         }
         
         repaint();

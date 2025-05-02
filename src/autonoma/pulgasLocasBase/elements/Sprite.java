@@ -109,6 +109,15 @@ public abstract class Sprite {
     public void setGraphicContainer(GraphicContainer gContainer) {
         this.gameContainer = gContainer;
     }
+
+    public GraphicContainer getGameContainer() {
+        return gameContainer;
+    }
+
+    public void setGameContainer(GraphicContainer gameContainer) {
+        this.gameContainer = gameContainer;
+    }
+    
 }
 
 

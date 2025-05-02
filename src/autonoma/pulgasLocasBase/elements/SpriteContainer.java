@@ -55,4 +55,10 @@ public class SpriteContainer extends Sprite implements GraphicContainer{
         g.setColor(color);
         g.fillRect(x, y, width, height);
     }
+
+    public ArrayList<Sprite> getSprites() {
+        return sprites;
+    }
+    
+    
 }

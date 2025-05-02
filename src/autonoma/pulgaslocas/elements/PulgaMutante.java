@@ -20,13 +20,20 @@ public class PulgaMutante extends Pulga{
     }
 
     @Override
-    public void saltar() {
-        System.out.println("Saltando");
+    public void recibirImpacto() {
+        this.indiceVida --;
     }
-
+    
     @Override
     public void paint(Graphics g) {
         g.setColor(color);
         g.fillOval(x, y, width, height);
+    }
+    
+    public Pulga transformar(){
+        if( this.indiceVida == 1){
+            return new PulgaNormal(1,x, y,15,15);
+        }
+        return this;
     }
 }
