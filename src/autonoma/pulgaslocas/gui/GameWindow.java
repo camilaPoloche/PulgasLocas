@@ -5,8 +5,6 @@
 package autonoma.pulgaslocas.gui;
 
 import autonoma.pulgasLocasBase.elements.GraphicContainer;
-import autonoma.pulgaslocas.elements.HiloAnadirPulgaMutante;
-import autonoma.pulgaslocas.elements.HiloAnadirPulgaNormal;
 import autonoma.pulgaslocas.elements.Montana;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -92,6 +90,9 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
             
             case KeyEvent.VK_S:
                 montana.handleKey(evt);
+            
+            case KeyEvent.VK_SPACE:
+                montana.handleKey(evt);
         }
         
         repaint();
@@ -101,9 +102,9 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
         if (evt.getButton() == MouseEvent.BUTTON1) {
             int x = evt.getX();
             int y = evt.getY();
-
-            this.montana.asesinarPulgasPulguipium(x, y);
+            this.montana.asesinarPulgasPulguipium(evt.getX(), evt.getY());;
         }
+        refresh();
     }//GEN-LAST:event_formMouseClicked
 
     @Override

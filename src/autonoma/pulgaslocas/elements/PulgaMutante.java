@@ -32,7 +32,9 @@ public class PulgaMutante extends Pulga{
     
     public Pulga transformar(){
         if( this.indiceVida == 1){
-            return new PulgaNormal(1,x, y,15,15);
+            PulgaNormal pulgaN = new PulgaNormal(1,x, y,15,15);
+            pulgaN.setGraphicContainer(gameContainer);
+            return pulgaN;
         }
         return this;
     }

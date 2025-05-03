@@ -62,11 +62,11 @@ public class Montana extends SpriteContainer implements GraphicContainer {
             }
         } while (chocadas);
         PulgaNormal pulga1 = new PulgaNormal(1, x, y, w, h);
+        pulga1.setGraphicContainer(this);
         sprites.add(pulga1);
         
         refresh();
     }
-
 
     public void addPulgaMutante() {
         int w = 20;
@@ -92,6 +92,7 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         } while (chocadas);
         
        PulgaMutante pulga2 = new PulgaMutante(2, x, y, w, h);
+       pulga2.setGraphicContainer(this);
        sprites.add(pulga2);
        
        refresh();
@@ -112,6 +113,10 @@ public class Montana extends SpriteContainer implements GraphicContainer {
             case KeyEvent.VK_S:
                 saltarP(this.width, this.height);
             break;
+            
+             case KeyEvent.VK_SPACE:
+                asesinarPulgasMisilPulgoson();
+            break;
         }    
     }
     
@@ -127,13 +132,14 @@ public class Montana extends SpriteContainer implements GraphicContainer {
     
     public void asesinarPulgasPulguipium(int x, int y){
         ArmaPistolaPulguipium armaPulguipium = new ArmaPistolaPulguipium(this);
-        for (Sprite p : sprites){
-            if (p instanceof Pulga){
-                if (((Pulga) p).getX() == x && ((Pulga) p).getY() == y){
-                    armaPulguipium.destruirPulgas(x, y);
-                }
-            }
-        }
+        armaPulguipium.destruirPulgas(x, y);
+        refresh();
+    }
+    
+    public void asesinarPulgasMisilPulgoson (){
+        ArmaMisilPulgoson armaPulgoson = new ArmaMisilPulgoson(this);
+        armaPulgoson.destruirPulgas();
+        refresh();
     }
     
     @Override
