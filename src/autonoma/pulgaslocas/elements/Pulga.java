@@ -47,5 +47,41 @@ public abstract class Pulga  extends Sprite{
         }
         return false;
     }
+    
+    public boolean move(){
+        int direction = (int)(Math.random() * 4);
+        
+        int nx = x;
+        int ny = y;
+        
+        switch(direction){
+            case 0: 
+                ny -= step;
+            break;
+
+            case 1:     
+                ny += step;
+            break;
+
+            case 2:     
+                nx -= step;
+            break;
+
+            case 3:   
+                nx += step;
+            break;
+        }
+        
+        if(!isOutOfGraphicContainer(nx, ny, width, height)){
+            x = nx;
+            y = ny;
+
+            if(gameContainer != null)
+                gameContainer.refresh();
+            
+            return true;
+        }
+        return false;
+    }
 }
 

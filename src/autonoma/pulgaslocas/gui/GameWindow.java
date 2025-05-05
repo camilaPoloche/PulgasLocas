@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 /**
  *
@@ -47,6 +48,8 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelPrincipal = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -59,15 +62,26 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
             }
         });
 
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -77,22 +91,46 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
         switch(evt.getKeyCode())
         {   
             case KeyEvent.VK_P:
-                montana.handleKey(evt);
+                try {
+                    montana.handleKey(evt);
+                } catch (IOException e) {
+                    System.out.println("Error obteniendo informacion del archivo");
+                }
+                
             break;
-            
+
             case KeyEvent.VK_M:
-                montana.handleKey(evt);
+                try {
+                    montana.handleKey(evt);
+                } catch (IOException e) {
+                    System.out.println("Error obteniendo informacion del archivo");
+                }
+                
             break;
+
             
             case KeyEvent.VK_Q:
                 exitGame();
             break;
             
             case KeyEvent.VK_S:
-                montana.handleKey(evt);
+                try {
+                    montana.handleKey(evt);
+                } catch (IOException e) {
+                    System.out.println("Error obteniendo informacion del archivo");
+                }
+
+                
             
             case KeyEvent.VK_SPACE:
-                montana.handleKey(evt);
+                try {
+                    montana.handleKey(evt);
+                    System.out.println((String.valueOf(this.montana.getPuntaje())));
+                } catch (IOException e) {
+                    System.out.println("Error obteniendo informacion del archivo");
+                }
+
+                
         }
         
         repaint();
@@ -102,7 +140,13 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
         if (evt.getButton() == MouseEvent.BUTTON1) {
             int x = evt.getX();
             int y = evt.getY();
-            this.montana.asesinarPulgasPulguipium(evt.getX(), evt.getY());;
+            try{
+                this.montana.asesinarPulgasPulguipium(evt.getX(), evt.getY());;
+                System.out.println((String.valueOf(this.montana.getPuntaje())));
+            } catch (IOException ev){
+                System.out.println("Error obteniendo informacion del archivo");
+            }
+            
         }
         refresh();
     }//GEN-LAST:event_formMouseClicked
@@ -117,5 +161,6 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
         return this.getBounds();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,18 +4,43 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
 
 /**
  *
  * @author aleja
  */
 public class EscritorArchivoTextoPlano implements Escritor {
-
-    @Override
-    public void escribir(ArrayList<String> archivo) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    /**
+     * charset en el cual se desea leer el archivo
+    */
+    private final Charset charset = Charset.forName("UTF-8");
     
+    private String filePath;
+
+    public EscritorArchivoTextoPlano(String filePath) {
+        this.filePath = filePath;
+    }
+ 
+    /**
+     * Sobreescribe el archivo de texto
+     * 
+     * @throws IOException 
+    */
+    @Override
+    public void escribir(String archivo) throws IOException {
+        File fichero = new File(this.filePath);
+        FileWriter writer = new FileWriter(fichero, false);
+        PrintWriter pw = new PrintWriter(writer);
+        System.out.println("Entre "+ archivo);
+
+        pw.println(archivo); 
+
+        pw.close();
+        writer.close();
+    }
 }

@@ -4,11 +4,13 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.io.IOException;
+
 /**
  *
  * @author aleja
  */
 public abstract class Arma {
-    public abstract void destruirPulgas(int x, int y);
-    public abstract void destruirPulgas();
+    public abstract void destruirPulgas(int x, int y) throws IOException;
+    public abstract void destruirPulgas() throws IOException;
 }

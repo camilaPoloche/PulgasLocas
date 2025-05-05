@@ -12,6 +12,11 @@ import java.util.ArrayList;
  * @author aleja
  */
 public interface Lector {
-    
-    public abstract ArrayList<String> leer(String localizacionArchivo) throws IOException;
+    /**
+     * Lee el archivo
+     * @param localizacionArchivo
+     * @return
+     * @throws IOException 
+    */
+    public abstract String leer(String localizacionArchivo) throws IOException;
 }
