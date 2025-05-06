@@ -5,6 +5,7 @@
 package autonoma.pulgaslocas.elements;
 
 import autonoma.pulgasLocasBase.elements.Sprite;
+import java.io.IOException;
 
 /**
  *
@@ -19,7 +20,7 @@ public class ArmaPistolaPulguipium extends Arma{
     }
     
     @Override
-    public void destruirPulgas(int x, int y) {
+    public void destruirPulgas(int x, int y) throws IOException{
         int rango = 10;  
 
         for (int i = 0; i < this.montana.getSprites().size(); i++) {
@@ -31,6 +32,10 @@ public class ArmaPistolaPulguipium extends Arma{
 
                 if (Math.abs(pulgaX - x) < rango && Math.abs(pulgaY - y) < rango) {
                     ((Pulga) p).recibirImpacto();
+                    int puntajeActual = this.montana.getPuntaje();
+                    int puntajeNuevo = puntajeActual += 1;
+                    this.montana.setPuntaje(puntajeNuevo);
+                  
 
                     if (p instanceof PulgaMutante) {
                         Pulga nueva = ((PulgaMutante) p).transformar();
