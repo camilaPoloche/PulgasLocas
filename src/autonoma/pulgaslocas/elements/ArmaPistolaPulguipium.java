@@ -21,7 +21,7 @@ public class ArmaPistolaPulguipium extends Arma{
     
     @Override
     public void destruirPulgas(int x, int y) throws IOException{
-        int rango = 10;  
+        int rango = 33;  
 
         for (int i = 0; i < this.montana.getSprites().size(); i++) {
             Sprite p = this.montana.getSprites().get(i);
@@ -32,10 +32,12 @@ public class ArmaPistolaPulguipium extends Arma{
 
                 if (Math.abs(pulgaX - x) < rango && Math.abs(pulgaY - y) < rango) {
                     ((Pulga) p).recibirImpacto();
-                    int puntajeActual = this.montana.getPuntaje();
-                    int puntajeNuevo = puntajeActual += 1;
-                    this.montana.setPuntaje(puntajeNuevo);
-                  
+                    
+                    if (p instanceof PulgaNormal){
+                        int puntajeActual = this.montana.getPuntaje();
+                        int puntajeNuevo = puntajeActual += 1;
+                        this.montana.setPuntaje(puntajeNuevo);
+                    }
 
                     if (p instanceof PulgaMutante) {
                         Pulga nueva = ((PulgaMutante) p).transformar();

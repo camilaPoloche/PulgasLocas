@@ -41,7 +41,7 @@ public class Montana extends SpriteContainer implements GraphicContainer {
 
         this.puntaje = 0;
 
-        this.setColor(Color.CYAN);
+        this.setColor(new Color(95, 175, 49));
     }
 
     public void addPulgaNormal() {

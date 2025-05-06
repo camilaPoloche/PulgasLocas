@@ -21,7 +21,7 @@ public class Main {
         
         Thread hilo1 = new Thread(new HiloAnadirPulgaNormal(montana));
         Thread hilo2 = new Thread(new HiloAnadirPulgaMutante(montana));
-//        Thread hilo3 = new Thread(new HiloMoverPulgas(montana));
+        Thread hilo3 = new Thread(new HiloMoverPulgas(montana));
         
         GameWindow window = new GameWindow(montana);
         window.setMontana(montana);
@@ -32,6 +32,6 @@ public class Main {
         window.setVisible(true);
         hilo1.start();
         hilo2.start();
-//        hilo3.start();
+        hilo3.start();
     }
 }

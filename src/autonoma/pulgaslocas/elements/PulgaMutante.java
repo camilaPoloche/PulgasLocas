@@ -30,7 +30,7 @@ public class PulgaMutante extends Pulga{
     
     public Pulga transformar(){
         if( this.indiceVida == 1){
-            PulgaNormal pulgaN = new PulgaNormal("/autonoma/pulgaslocas/images/pulgaBoba.png", 1, x, y, 15, 15);
+            PulgaNormal pulgaN = new PulgaNormal("/autonoma/pulgaslocas/images/pulgaBoba.png", 1, x, y, 50, 50);
             pulgaN.setGraphicContainer(gameContainer);
             return pulgaN;
         }
