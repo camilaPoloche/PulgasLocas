@@ -29,12 +29,12 @@ public class Montana extends SpriteContainer implements GraphicContainer {
     public Montana(int x, int y, int height, int width) {
         super(x, y, height, width);
 
-        pulga1 = new PulgaNormal(1, (this.width - PulgaNormal.INITIAL_WIDTH) / 2,
+        pulga1 = new PulgaNormal("/autonoma/pulgaslocas/images/pulgaBoba.png", 1, (this.width - PulgaNormal.INITIAL_WIDTH) / 2,
                 (this.height - PulgaNormal.INITIAL_HEIGHT) / 2,
                 PulgaNormal.INITIAL_WIDTH, PulgaNormal.INITIAL_HEIGHT);
         pulga1.setGraphicContainer(this);
 
-        pulga2 = new PulgaMutante(2, (this.width - PulgaMutante.INITIAL_WIDTH) / 2,
+        pulga2 = new PulgaMutante("/autonoma/pulgaslocas/images/pulgaAvispada.png", 2, (this.width - PulgaMutante.INITIAL_WIDTH) / 2,
                 (this.height - PulgaMutante.INITIAL_HEIGHT) / 2,
                 PulgaMutante.INITIAL_WIDTH, PulgaMutante.INITIAL_HEIGHT);
         pulga2.setGraphicContainer(this);
@@ -45,8 +45,8 @@ public class Montana extends SpriteContainer implements GraphicContainer {
     }
 
     public void addPulgaNormal() {
-        int w = 15;
-        int h = 15;
+        int w = 50;
+        int h = 50;
         int x, y;
 
         boolean chocadas;
@@ -66,7 +66,7 @@ public class Montana extends SpriteContainer implements GraphicContainer {
                 }
             }
         } while (chocadas);
-        PulgaNormal pulga1 = new PulgaNormal(1, x, y, w, h);
+        PulgaNormal pulga1 = new PulgaNormal("/autonoma/pulgaslocas/images/pulgaBoba.png", 1, x, y, w, h);
         pulga1.setGraphicContainer(this);
         sprites.add(pulga1);
 
@@ -74,8 +74,8 @@ public class Montana extends SpriteContainer implements GraphicContainer {
     }
 
     public void addPulgaMutante() {
-        int w = 20;
-        int h = 20;
+        int w = 60;
+        int h = 60;
         int x, y;
 
         boolean chocadas;
@@ -96,7 +96,7 @@ public class Montana extends SpriteContainer implements GraphicContainer {
             }
         } while (chocadas);
 
-        PulgaMutante pulga2 = new PulgaMutante(2, x, y, w, h);
+        PulgaMutante pulga2 = new PulgaMutante("/autonoma/pulgaslocas/images/pulgaAvispada.png", 2, x, y, w, h);
         pulga2.setGraphicContainer(this);
         sprites.add(pulga2);
 

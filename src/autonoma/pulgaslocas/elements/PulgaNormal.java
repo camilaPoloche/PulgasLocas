@@ -13,17 +13,15 @@ import java.awt.Graphics;
  */
 public class PulgaNormal extends Pulga{
     
-    public PulgaNormal(int indiceVida, int x, int y, int height, int width) {
-        super(1, x, y, height, width);
+    public PulgaNormal(String path, int indiceVida, int x, int y, int height, int width) {
+        super(path, 1, x, y, height, width);
         this.indiceVida = indiceVida;
-        setColor(Color.BLUE);
     }
 
 
     @Override
     public void paint(Graphics g) {
-        g.setColor(color);
-        g.fillOval(x, y, width, height);
+        drawImage(g);
     }
 
     @Override

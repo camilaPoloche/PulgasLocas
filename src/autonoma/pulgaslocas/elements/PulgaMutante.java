@@ -13,10 +13,9 @@ import java.awt.Graphics;
  */
 public class PulgaMutante extends Pulga{
     
-    public PulgaMutante(int indiceVida, int x, int y, int height, int width) {
-        super(2,x, y, height, width);
+    public PulgaMutante(String path, int indiceVida, int x, int y, int height, int width) {
+        super(path, 2, x, y, height, width);
         this.indiceVida = indiceVida;
-        setColor(Color.RED);
     }
 
     @Override
@@ -26,13 +25,12 @@ public class PulgaMutante extends Pulga{
     
     @Override
     public void paint(Graphics g) {
-        g.setColor(color);
-        g.fillOval(x, y, width, height);
+        drawImage(g);
     }
     
     public Pulga transformar(){
         if( this.indiceVida == 1){
-            PulgaNormal pulgaN = new PulgaNormal(1,x, y,15,15);
+            PulgaNormal pulgaN = new PulgaNormal("/autonoma/pulgaslocas/images/pulgaBoba.png", 1, x, y, 15, 15);
             pulgaN.setGraphicContainer(gameContainer);
             return pulgaN;
         }
