@@ -6,6 +6,11 @@ package autonoma.pulgaslocas.elements;
 
 import autonoma.pulgasLocasBase.elements.Sprite;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 /**
  *
  * @author Camila
@@ -17,13 +22,18 @@ public abstract class Pulga  extends Sprite{
     public static final int INITIAL_WIDTH = 50;
     public static final int INITIAL_HEIGHT = 50;
     public static final int GROW_SIZE = 4;
+    private BufferedImage image;
     
     protected int step = 5;     
 
-    public Pulga(int indiceVida, int x, int y, int height, int width) {
+    public Pulga(String path, int indiceVida, int x, int y, int height, int width) {
         super(x, y, height, width);
+        try {
+            this.image = ImageIO.read(getClass().getResource(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.indiceVida = indiceVida;
-        setColor(Color.BLUE);
     }
   
     public void saltar(int width,int height){
@@ -82,6 +92,19 @@ public abstract class Pulga  extends Sprite{
             return true;
         }
         return false;
+    }
+    
+    public void drawImage(Graphics g) {
+        if (image != null) {
+            g.drawImage(image, x, y, width, height, null);
+        } else {
+            g.setColor(color != null ? color : Color.BLACK);
+            g.fillRect(x, y, width, height);
+        }
+    }
+    
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, image.getWidth(null), image.getHeight(null));
     }
 }
 

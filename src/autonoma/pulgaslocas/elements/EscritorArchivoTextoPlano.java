@@ -36,7 +36,6 @@ public class EscritorArchivoTextoPlano implements Escritor {
         File fichero = new File(this.filePath);
         FileWriter writer = new FileWriter(fichero, false);
         PrintWriter pw = new PrintWriter(writer);
-        System.out.println("Entre "+ archivo);
 
         pw.println(archivo); 
 

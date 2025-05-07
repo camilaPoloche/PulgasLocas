@@ -34,7 +34,7 @@ public class HiloMoverPulgas implements Runnable{
             if(isPaused())
                 continue;
             
-            for (Sprite sprite : this.montana.getSprites()) {
+            for (Sprite sprite : this.montana.getCopiaSprites()) {
                 if (sprite instanceof Pulga) {
                     ((Pulga) sprite).move();
                 }
