@@ -159,7 +159,7 @@ public class Montana extends SpriteContainer implements GraphicContainer {
      * @return String
      */
     public String mostrarPuntajeActual() throws IOException {
-        lector = new LectorArchivoTextoPlano(); // Asegurarse de que esté instanciado
+        lector = new LectorArchivoTextoPlano(); 
         return lector.leer("puntaje.txt");
     }
 
@@ -200,5 +200,9 @@ public class Montana extends SpriteContainer implements GraphicContainer {
     public void setPuntaje(int puntaje) throws IOException {
         this.puntaje = puntaje;
         this.actualizarPuntaje(puntaje);
+    }
+    
+    public synchronized ArrayList<Sprite> getCopiaSprites() {
+        return new ArrayList<>(sprites); 
     }
 }
