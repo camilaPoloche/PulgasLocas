@@ -21,7 +21,6 @@ public abstract class Pulga  extends Sprite{
     protected int indiceVida;
     public static final int INITIAL_WIDTH = 50;
     public static final int INITIAL_HEIGHT = 50;
-    public static final int GROW_SIZE = 4;
     private BufferedImage image;
     
     protected int step = 5;     
@@ -107,4 +106,3 @@ public abstract class Pulga  extends Sprite{
         return new Rectangle(x, y, image.getWidth(null), image.getHeight(null));
     }
 }
-

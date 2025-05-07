@@ -124,7 +124,6 @@ public class Montana extends SpriteContainer implements GraphicContainer {
     }
 
     public void saltarP(int width, int height) {
-
         for (Sprite p : sprites) {
             if (p instanceof Pulga) {
                 ((Pulga) p).saltar(width, height);
@@ -202,7 +201,7 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         this.actualizarPuntaje(puntaje);
     }
     
-    public synchronized ArrayList<Sprite> getCopiaSprites() {
+    public ArrayList<Sprite> getCopiaSprites() {
         return new ArrayList<>(sprites); 
     }
 }

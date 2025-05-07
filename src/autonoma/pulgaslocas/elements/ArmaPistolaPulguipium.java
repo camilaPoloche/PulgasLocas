@@ -8,17 +8,32 @@ import autonoma.pulgasLocasBase.elements.Sprite;
 import java.io.IOException;
 
 /**
- *
- * @author aleja
- */
+ * Modelo que permite representar un ArmaPistolaPulguipium
+ * @author Camila
+ * @since 20250506
+ * @version 1.0
+*/
 public class ArmaPistolaPulguipium extends Arma{
-    
+    //Atributos
+    /**
+    * Instancia de Montana
+    */
     private Montana montana;
 
+    /**
+     * Inicializa los atributos de la clase ArmaPistolaPulguipium
+     * @param montana
+    */
     public ArmaPistolaPulguipium(Montana montana) {
         this.montana = montana;
     }
     
+    /**
+     * Metodo destruirPulgas
+     * @param x
+     * @param y
+     * @throws IOException
+    */
     @Override
     public void destruirPulgas(int x, int y) throws IOException{
         int rango = 33;  
@@ -51,8 +66,12 @@ public class ArmaPistolaPulguipium extends Arma{
         }
     }
 
+    /**
+     * Metodo destruirPulgas
+     * @throws IOException
+    */
     @Override
-    public void destruirPulgas() {
+    public void destruirPulgas() throws IOException{
         
     }
 }

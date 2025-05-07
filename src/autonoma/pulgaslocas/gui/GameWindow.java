@@ -13,26 +13,47 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 /**
- *
- * @author aleja
- */
+ * Modelo que permite representar la VentanaPrincipal 
+ * @author Camila
+ * @since 20250506
+ * @version 1.0
+*/
+
 public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
-    
+    //Atributos
+    /**
+    * Instancia de Montana
+    */
     private Montana montana;
-        
+    
+    /**
+     * Inicializa los atributos de la clase GameWindow
+     * @param montana
+    */    
     public GameWindow(Montana montana) {
         this.montana = montana;
         initComponents();
     }
     
+    /**
+     * Metodo para cerrar la GameWindow
+    */
     private void exitGame(){
         System.exit(0);
     }
     
+    /**
+     * Modifica la instancia de montana
+     * @param montana
+    */
     public void setMontana(Montana montana) {
         this.montana = montana;
     }
 
+    /**
+     * Metodo que dibuja sobre la GameWindow
+     * @param g
+    */
     @Override
     public void paint(Graphics g) {
        super.paint(g); 
@@ -90,6 +111,10 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Evento del teclado - KeyPressed
+     * @param evt
+    */
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         switch(evt.getKeyCode())
         {   
@@ -111,7 +136,6 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
                 
             break;
 
-            
             case KeyEvent.VK_Q:
                 exitGame();
             break;
@@ -122,9 +146,7 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
                 } catch (IOException e) {
                     System.out.println("Error obteniendo informacion del archivo");
                 }
-
                 
-            
             case KeyEvent.VK_SPACE:
                 try {
                     montana.handleKey(evt);
@@ -132,13 +154,13 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
                 } catch (IOException e) {
                     System.out.println("Error obteniendo informacion del archivo");
                 }
-
-                
         }
-        
         repaint();
     }//GEN-LAST:event_formKeyPressed
-
+    /**
+     * Evento del mouse - MouseClicked
+     * @param evt
+    */
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON1) {
             int x = evt.getX();
@@ -148,16 +170,22 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
             } catch (IOException ev){
                 System.out.println("Error obteniendo informacion del archivo");
             }
-            
         }
         refresh();
     }//GEN-LAST:event_formMouseClicked
 
+    /**
+     * Metodo que actualiza los objetos sobre la GameWindow
+    */
     @Override
     public void refresh() {
         this.repaint();
     }
 
+    /**
+     * Retorna las medidas del GameWindow
+     * @return Rectangle
+    */
     @Override
     public Rectangle getBoundaries() {
         return this.getBounds();
