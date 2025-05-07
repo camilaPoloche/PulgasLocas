@@ -24,6 +24,14 @@ public abstract class Pulga extends Sprite {
      * Indice de vida de la pulga
      */
     protected int indiceVida;
+<<<<<<< HEAD
+=======
+    public static final int INITIAL_WIDTH = 50;
+    public static final int INITIAL_HEIGHT = 50;
+    private BufferedImage image;
+    
+    protected int step = 5;     
+>>>>>>> 2c8730f0b981e2b62e85c5fb3a5b207e13b1864c
 
     /**
      * Ancho inicial de la pulga
@@ -165,4 +173,8 @@ public abstract class Pulga extends Sprite {
     public Rectangle getBounds() {
         return new Rectangle(x, y, image.getWidth(null), image.getHeight(null));
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2c8730f0b981e2b62e85c5fb3a5b207e13b1864c

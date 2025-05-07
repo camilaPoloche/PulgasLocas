@@ -283,12 +283,17 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         this.puntaje = puntaje;
         this.actualizarPuntaje(puntaje);
     }
+<<<<<<< HEAD
 
     /**
      * Devuelve una copia sincronizada de los sprites para evitar concurrencia
      * @return copia de la lista de sprites
      */
     public synchronized ArrayList<Sprite> getCopiaSprites() {
+=======
+    
+    public ArrayList<Sprite> getCopiaSprites() {
+>>>>>>> 2c8730f0b981e2b62e85c5fb3a5b207e13b1864c
         return new ArrayList<>(sprites); 
     }
 }

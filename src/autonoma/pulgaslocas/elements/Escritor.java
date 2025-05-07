@@ -5,12 +5,13 @@
 package autonoma.pulgaslocas.elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
- *
- * @author aleja
- */
+ * Modelo que permite representar un Escritor como interface
+ * @author Camila
+ * @since 20250506
+ * @version 1.0
+*/
 public interface Escritor {
     /**
      * Escribe el archivo de memoria interna por lineas

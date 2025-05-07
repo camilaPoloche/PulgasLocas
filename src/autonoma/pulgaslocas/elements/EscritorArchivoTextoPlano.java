@@ -11,15 +11,22 @@ import java.io.PrintWriter;
 import java.nio.charset.Charset;
 
 /**
- *
- * @author aleja
- */
+ * Modelo que permite representar un Escritor de archivo de texto plano
+ * @author Camila
+ * @since 20250506
+ * @version 1.0
+*/
+
 public class EscritorArchivoTextoPlano implements Escritor {
+    //Atributos
     /**
      * charset en el cual se desea leer el archivo
     */
     private final Charset charset = Charset.forName("UTF-8");
     
+    /**
+    * Ubicacion del archivo
+    */
     private String filePath;
 
     public EscritorArchivoTextoPlano(String filePath) {
