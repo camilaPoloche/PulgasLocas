@@ -12,9 +12,11 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 /**
- *
- * @author aleja
- */
+ * Modelo que permite representar la lectura de un archivo
+ * @author Mariana
+ * @since 20250507
+ * @version 1.0
+*/
 public class LectorArchivoTextoPlano implements Lector{
     /**
      * Archivo de la configuracion

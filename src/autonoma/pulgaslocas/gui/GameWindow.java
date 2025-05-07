@@ -145,7 +145,6 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
             int y = evt.getY();
             try{
                 this.montana.asesinarPulgasPulguipium(evt.getX(), evt.getY());;
-                System.out.println((String.valueOf(this.montana.getPuntaje())));
             } catch (IOException ev){
                 System.out.println("Error obteniendo informacion del archivo");
             }

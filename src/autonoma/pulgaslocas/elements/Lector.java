@@ -8,9 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
- * @author aleja
- */
+ * Modelo que permite representar un lector
+ * @author Mariana
+ * @since 20250507
+ * @version 1.0
+*/
 public interface Lector {
     /**
      * Lee el archivo

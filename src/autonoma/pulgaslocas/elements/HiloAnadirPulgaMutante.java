@@ -5,9 +5,11 @@
 package autonoma.pulgaslocas.elements;
 
 /**
- *
- * @author Camila
- */
+ * Modelo que permite representar un hilo de una pulga mutante
+ * @author Mariana
+ * @since 20250507
+ * @version 1.0
+*/
 public class HiloAnadirPulgaMutante implements Runnable{
     private Montana montana;
     private boolean running = true;

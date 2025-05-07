@@ -7,9 +7,11 @@ package autonoma.pulgaslocas.elements;
 import autonoma.pulgasLocasBase.elements.Sprite;
 
 /**
- *
- * @author Camila
- */
+ * Modelo que permite representar un hilo para mover pulgas
+ * @author Mariana
+ * @since 20250507
+ * @version 1.0
+*/
 public class HiloMoverPulgas implements Runnable{
     private Montana montana;
     private boolean running;
