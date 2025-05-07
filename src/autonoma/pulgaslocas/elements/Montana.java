@@ -15,17 +15,46 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
- * @author aleja
+ * Modelo que representa el escenario principal donde se desarrollan las interacciones 
+ * entre las pulgas y las armas del juego.
+ * @author Alejandro
+ * @since 20250507
+ * @version 1.0
  */
 public class Montana extends SpriteContainer implements GraphicContainer {
 
+    /**
+     * Instancia de la clase PulgaNormal
+     */
     private PulgaNormal pulga1;
+
+    /**
+     * Instancia de la clase PulgaMutante
+     */
     private PulgaMutante pulga2;
+
+    /**
+     * Instancia para escribir archivos de texto plano
+     */
     private EscritorArchivoTextoPlano escritor;
+
+    /**
+     * Instancia para leer archivos de texto plano
+     */
     private LectorArchivoTextoPlano lector;
+
+    /**
+     * Puntaje actual del jugador
+     */
     private int puntaje;
 
+    /**
+     * Constructor que inicializa los atributos y configura las pulgas iniciales en la montaña
+     * @param x posición en X del contenedor
+     * @param y posición en Y del contenedor
+     * @param height altura del contenedor
+     * @param width ancho del contenedor
+     */
     public Montana(int x, int y, int height, int width) {
         super(x, y, height, width);
 
@@ -44,6 +73,9 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         this.setColor(new Color(95, 175, 49));
     }
 
+    /**
+     * Agrega una nueva pulga normal en una posición aleatoria sin colisionar con otras
+     */
     public void addPulgaNormal() {
         int w = 50;
         int h = 50;
@@ -73,6 +105,9 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         refresh();
     }
 
+    /**
+     * Agrega una nueva pulga mutante en una posición aleatoria sin colisionar con otras
+     */
     public void addPulgaMutante() {
         int w = 60;
         int h = 60;
@@ -103,7 +138,12 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         refresh();
     }
 
-    public void handleKey(KeyEvent e) throws IOException{
+    /**
+     * Maneja eventos del teclado para ejecutar acciones en el juego
+     * @param e evento de teclado
+     * @throws IOException
+     */
+    public void handleKey(KeyEvent e) throws IOException {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_P:
                 addPulgaNormal();
@@ -123,8 +163,12 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         }
     }
 
+    /**
+     * Hace saltar a todas las pulgas dentro del area de juego
+     * @param width ancho del contenedor
+     * @param height alto del contenedor
+     */
     public void saltarP(int width, int height) {
-
         for (Sprite p : sprites) {
             if (p instanceof Pulga) {
                 ((Pulga) p).saltar(width, height);
@@ -133,18 +177,33 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         refresh();
     }
 
-    public void asesinarPulgasPulguipium(int x, int y) throws IOException{
+    /**
+     * Elimina pulgas cercanas a una coordenada con el arma Pulguipium
+     * @param x posición X del disparo
+     * @param y posición Y del disparo
+     * @throws IOException
+     */
+    public void asesinarPulgasPulguipium(int x, int y) throws IOException {
         ArmaPistolaPulguipium armaPulguipium = new ArmaPistolaPulguipium(this);
         armaPulguipium.destruirPulgas(x, y);
         refresh();
     }
 
-    public void asesinarPulgasMisilPulgoson() throws IOException{
+    /**
+     * Elimina todas las pulgas con el arma Misil Pulgoson
+     * @throws IOException
+     */
+    public void asesinarPulgasMisilPulgoson() throws IOException {
         ArmaMisilPulgoson armaPulgoson = new ArmaMisilPulgoson(this);
         armaPulgoson.destruirPulgas();
         refresh();
     }
 
+    /**
+     * Actualiza el puntaje y lo guarda en un archivo
+     * @param nuevoPuntaje nuevo valor del puntaje
+     * @throws IOException
+     */
     public void actualizarPuntaje(int nuevoPuntaje) throws IOException {
         this.puntaje = nuevoPuntaje;
 
@@ -153,16 +212,19 @@ public class Montana extends SpriteContainer implements GraphicContainer {
     }
 
     /**
-     * Muestra la configuracion actual del vehiculo
-     *
+     * Muestra el puntaje actual almacenado en el archivo
+     * @return puntaje leído
      * @throws IOException
-     * @return String
      */
     public String mostrarPuntajeActual() throws IOException {
         lector = new LectorArchivoTextoPlano(); 
         return lector.leer("puntaje.txt");
     }
 
+    /**
+     * Dibuja los elementos graficos del juego sobre el panel
+     * @param g contexto gráfico
+     */
     @Override
     public void paint(Graphics g) {
         g.setColor(color);
@@ -177,6 +239,9 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         }
     }
 
+    /**
+     * Refresca la vista del contenedor grafico
+     */
     @Override
     public void refresh() {
         if (gameContainer != null) {
@@ -184,24 +249,45 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         }
     }
 
+    /**
+     * Devuelve los limites del area del juego
+     * @return limites como objeto Rectangle
+     */
     @Override
     public Rectangle getBoundaries() {
         return new Rectangle(x, y, width, height);
     }
 
+    /**
+     * Retorna la lista de sprites actuales
+     * @return lista de sprites
+     */
     public ArrayList<Sprite> getSprites() {
         return sprites;
     }
 
+    /**
+     * Retorna el puntaje actual
+     * @return puntaje
+     */
     public int getPuntaje() {
         return puntaje;
     }
 
+    /**
+     * Establece el puntaje y lo actualiza en el archivo
+     * @param puntaje nuevo puntaje
+     * @throws IOException
+     */
     public void setPuntaje(int puntaje) throws IOException {
         this.puntaje = puntaje;
         this.actualizarPuntaje(puntaje);
     }
-    
+
+    /**
+     * Devuelve una copia sincronizada de los sprites para evitar concurrencia
+     * @return copia de la lista de sprites
+     */
     public synchronized ArrayList<Sprite> getCopiaSprites() {
         return new ArrayList<>(sprites); 
     }
