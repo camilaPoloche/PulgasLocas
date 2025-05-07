@@ -19,7 +19,7 @@ import java.util.ArrayList;
 */
 public class LectorArchivoTextoPlano implements Lector{
     /**
-     * Archivo de la configuracion
+     * Archivo del puntaje
     */
     private String archivo;
     /**
@@ -28,17 +28,16 @@ public class LectorArchivoTextoPlano implements Lector{
     private Charset charset = Charset.forName("UTF-8");
 
     /**
-     * Inicializa las variables de la clase Taller
+     * metodo constructor
      */
     public LectorArchivoTextoPlano(){
-
     }
     
     /**
-     * Lee el archivo de texto dónde tenemos el programa que deseamos interpretar
+     * Lee el archivo de texto donde tenemos el programa que deseamos interpretar
      *
      * @param localizacionArchivo ruta del archivo
-     * @return arreglo con el archivo de texto
+     * @return archivo de texto
      * @throws IOException: si el archivo no existe
      */
     
