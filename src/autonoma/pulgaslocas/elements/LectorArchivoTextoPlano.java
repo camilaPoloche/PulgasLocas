@@ -59,7 +59,7 @@ public class LectorArchivoTextoPlano implements Lector{
         return this.archivo;
     }
 
-    public String getConfiguracionVehiculo() {
+    public String getConfiguracionPulgas() {
         return archivo;
     }
 }
