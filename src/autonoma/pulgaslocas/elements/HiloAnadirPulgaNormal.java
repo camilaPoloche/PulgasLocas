@@ -5,17 +5,34 @@
 package autonoma.pulgaslocas.elements;
 
 /**
- *
- * @author Camila
- */
+ * Modelo que permite representar un hilo de una pulga normal
+ * @author Mariana
+ * @since 20250507
+ * @version 1.0
+*/
 public class HiloAnadirPulgaNormal extends Thread{
+    /**
+     * instancia de la clase Montana
+    */
     private Montana montana;
+    
+     /**
+     * bandera de control para determinar la ejecucion 
+    */
     private boolean running = true;
+    
+    /**
+    * Inicializa los atributos de la clase HiloAnadirPulgaNormal
+    * @param montana
+    */
 
     public HiloAnadirPulgaNormal(Montana montana) {
         this.montana = montana;
     }
     
+    /**
+    * Sobrescribe el metodo run() de la interfaz Runnable
+    */
     @Override
     public void run() {
         while (running) {

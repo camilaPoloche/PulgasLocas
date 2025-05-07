@@ -12,12 +12,14 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 /**
- *
- * @author aleja
- */
+ * Modelo que permite representar la lectura de un archivo
+ * @author Mariana
+ * @since 20250507
+ * @version 1.0
+*/
 public class LectorArchivoTextoPlano implements Lector{
     /**
-     * Archivo de la configuracion
+     * Archivo del puntaje
     */
     private String archivo;
     /**
@@ -26,17 +28,16 @@ public class LectorArchivoTextoPlano implements Lector{
     private Charset charset = Charset.forName("UTF-8");
 
     /**
-     * Inicializa las variables de la clase Taller
+     * metodo constructor
      */
     public LectorArchivoTextoPlano(){
-
     }
     
     /**
-     * Lee el archivo de texto dónde tenemos el programa que deseamos interpretar
+     * Lee el archivo de texto donde tenemos el programa que deseamos interpretar
      *
      * @param localizacionArchivo ruta del archivo
-     * @return arreglo con el archivo de texto
+     * @return archivo de texto
      * @throws IOException: si el archivo no existe
      */
     
@@ -58,7 +59,7 @@ public class LectorArchivoTextoPlano implements Lector{
         return this.archivo;
     }
 
-    public String getConfiguracionVehiculo() {
+    public String getConfiguracionPulgas() {
         return archivo;
     }
 }
