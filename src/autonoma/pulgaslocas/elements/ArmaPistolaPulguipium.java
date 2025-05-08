@@ -19,6 +19,10 @@ public class ArmaPistolaPulguipium extends Arma{
     * Instancia de Montana
     */
     private Montana montana;
+    /**
+    * Instancia de Sonido
+    */
+    private Sonido sonido;
 
     /**
      * Inicializa los atributos de la clase ArmaPistolaPulguipium
@@ -26,6 +30,7 @@ public class ArmaPistolaPulguipium extends Arma{
     */
     public ArmaPistolaPulguipium(Montana montana) {
         this.montana = montana;
+        this.sonido = new Sonido();
     }
     
     /**
@@ -47,6 +52,7 @@ public class ArmaPistolaPulguipium extends Arma{
 
                 if (Math.abs(pulgaX - x) < rango && Math.abs(pulgaY - y) < rango) {
                     ((Pulga) p).recibirImpacto();
+                    this.sonido.reproducir("disparo.wav");
                     
                     if (p instanceof PulgaNormal){
                         int puntajeActual = this.montana.getPuntaje();
@@ -63,6 +69,10 @@ public class ArmaPistolaPulguipium extends Arma{
                     break;  
                 }
             }
+        }
+        
+        if(this.montana.getSprites().size() == 0){
+            this.montana.setAcabado(true);
         }
     }
 

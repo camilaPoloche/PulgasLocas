@@ -8,6 +8,7 @@ import autonoma.pulgasLocasBase.elements.GraphicContainer;
 import autonoma.pulgasLocasBase.elements.Sprite;
 import autonoma.pulgasLocasBase.elements.SpriteContainer;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -22,11 +23,12 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Montana extends SpriteContainer implements GraphicContainer {
-
     /**
      * Instancia de la clase PulgaNormal
      */
     private PulgaNormal pulga1;
+    
+    private boolean acabado = false;
 
     /**
      * Instancia de la clase PulgaMutante
@@ -83,8 +85,8 @@ public class Montana extends SpriteContainer implements GraphicContainer {
 
         boolean chocadas;
         do {
-            x = (int) (Math.random() * (this.width - 15));
-            y = (int) (Math.random() * (this.height - 15));
+            x = (int) (Math.random() * (this.width - 50));
+            y = (int) (Math.random() * (this.height - 50));
             chocadas = false;
 
             for (Sprite sprite : sprites) {
@@ -115,14 +117,14 @@ public class Montana extends SpriteContainer implements GraphicContainer {
 
         boolean chocadas;
         do {
-            x = (int) (Math.random() * (this.width - 20));
-            y = (int) (Math.random() * (this.height - 20));
+            x = (int) (Math.random() * (this.width - 60));
+            y = (int) (Math.random() * (this.height - 60));
             chocadas = false;
-
+            int rango = 20;
             for (Sprite sprite : sprites) {
                 Pulga pulgaExistente = (Pulga) sprite;
-                int distanciaX = Math.abs(x - pulgaExistente.getX());
-                int distanciaY = Math.abs(y - pulgaExistente.getY());
+                int distanciaX = Math.abs((x + rango) - pulgaExistente.getX());
+                int distanciaY = Math.abs((y + rango) - pulgaExistente.getY());
 
                 if (distanciaX < w && distanciaY < h) {
                     chocadas = true;
@@ -230,7 +232,10 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         g.setColor(color);
         g.fillRect(x, y, width, height);
         g.setColor(Color.BLACK);
-        g.drawString(this.puntaje+"", 10, 50);
+        Font fuente = new Font("Century Gothic", Font.PLAIN, 20);
+        g.setFont(fuente);
+        g.drawString("Puntaje: ", 10, 55);
+        g.drawString(this.puntaje + "", 100, 55);
 
         ArrayList<Sprite> copiaSprites = new ArrayList<>(sprites);
 
@@ -283,17 +288,43 @@ public class Montana extends SpriteContainer implements GraphicContainer {
         this.puntaje = puntaje;
         this.actualizarPuntaje(puntaje);
     }
-<<<<<<< HEAD
+    
+    /**
+     * Reinicia el puntaje y el arreglo de sprites
+     * @throws IOException
+     */
+    public void reiniciarJuego() throws IOException {
+        this.puntaje = 0;
+        this.sprites.clear(); 
+        this.acabado = false;
+        this.actualizarPuntaje(0);
+        this.addPulgaNormal(); 
+        this.addPulgaMutante();
+
+        this.refresh();
+    }
 
     /**
-     * Devuelve una copia sincronizada de los sprites para evitar concurrencia
+     * Devuelve una copia de los sprites 
      * @return copia de la lista de sprites
-     */
-    public synchronized ArrayList<Sprite> getCopiaSprites() {
-=======
-    
+    */
     public ArrayList<Sprite> getCopiaSprites() {
->>>>>>> 2c8730f0b981e2b62e85c5fb3a5b207e13b1864c
         return new ArrayList<>(sprites); 
+    }
+    
+    /**
+     * Modifica la bandera acabado
+     * @return acabado
+    */
+    public boolean isAcabado() {
+        return acabado;
+    }
+
+    /**
+     * Modifica la bandera acabado
+     * @param acabado
+    */
+    public void setAcabado(boolean acabado) {
+        this.acabado = acabado;
     }
 }

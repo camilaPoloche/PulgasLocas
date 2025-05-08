@@ -11,6 +11,9 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * Modelo que permite representar la VentanaPrincipal 
@@ -25,12 +28,16 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
     * Instancia de Montana
     */
     private Montana montana;
+    /**
+    * bandera para verificar si el juego se acabo o no
+    */
+    private boolean terminado = false;
     
     /**
      * Inicializa los atributos de la clase GameWindow
      * @param montana
     */    
-    public GameWindow(Montana montana) {
+    public GameWindow(Montana montana){
         this.montana = montana;
         initComponents();
     }
@@ -48,6 +55,24 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
     */
     public void setMontana(Montana montana) {
         this.montana = montana;
+    }
+    
+    /**
+     * Reinicia el juego en caso de que el usuario lo desee
+    */
+    public void reiniciar () throws IOException{
+        String opcion;
+        do{
+            JOptionPane.showMessageDialog(null, "Ganaste!! Tu puntaje fue: " + this.montana.getPuntaje());
+            opcion = JOptionPane.showInputDialog(null, "Deseas reiniciar el juego? 1) si 2) no ");
+        } while (!"1".equals(opcion) && !"2".equals(opcion));
+        
+        
+        if ("1".equals(opcion)){
+            this.montana.reiniciarJuego();
+        } else if ("2".equals(opcion)){
+            this.dispose();
+        }
     }
 
     /**
@@ -147,10 +172,9 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
                     System.out.println("Error obteniendo informacion del archivo");
                 }
                 
-            case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_SPACE:                
                 try {
                     montana.handleKey(evt);
-                    System.out.println((String.valueOf(this.montana.getPuntaje())));
                 } catch (IOException e) {
                     System.out.println("Error obteniendo informacion del archivo");
                 }
@@ -162,7 +186,7 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
      * @param evt
     */
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        if (evt.getButton() == MouseEvent.BUTTON1) {
+        if (evt.getButton() == MouseEvent.BUTTON1) {  
             int x = evt.getX();
             int y = evt.getY();
             try{
@@ -171,6 +195,16 @@ public class GameWindow extends javax.swing.JFrame implements GraphicContainer{
                 System.out.println("Error obteniendo informacion del archivo");
             }
         }
+        
+        if (!terminado && montana.getSprites().isEmpty()) {
+            terminado = true;
+            try { 
+                reiniciar();
+            } catch (IOException ex) {
+                System.out.println("Error reiniciando el juego");
+            }
+        }
+
         refresh();
     }//GEN-LAST:event_formMouseClicked
 

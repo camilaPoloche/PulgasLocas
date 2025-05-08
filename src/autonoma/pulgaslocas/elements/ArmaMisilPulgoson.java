@@ -18,6 +18,10 @@ public class ArmaMisilPulgoson extends Arma{
     * Instancia de Montana
     */
     private Montana montana;
+    /**
+    * Instancia de Sonido
+    */
+    private Sonido sonido;
 
     /**
      * Inicializa los atributos de la clase ArmaMisilPulgoson
@@ -25,6 +29,7 @@ public class ArmaMisilPulgoson extends Arma{
     */
     public ArmaMisilPulgoson(Montana montana) {
         this.montana = montana;
+        this.sonido = new Sonido();
     }
     
     /**
@@ -33,12 +38,17 @@ public class ArmaMisilPulgoson extends Arma{
     */
     @Override
     public void destruirPulgas() throws IOException{
+        this.sonido.reproducir("misil.wav");
         int destruir = this.montana.getSprites().size() / 2;
         for (int i = 0; i < destruir; i++) {
-            this.montana.remove(0);
+            this.montana.remove(i);
             int puntajeActual = this.montana.getPuntaje();
             puntajeActual += destruir;
             this.montana.setPuntaje(puntajeActual);
+        }
+        
+        if(this.montana.getSprites().size() == 0){
+            this.montana.setAcabado(true);
         }
     }
 
